@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Efekt</title>
+      {% else %}
+      <title>Welcome to Efekt</title>
+      {% endif %}
+    </head>
+    <body>
+        <div><a href="{{ url_for('index') }}">Home</a></div>
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">Login</a>
+        {% else %}
+        <a href="{{ url_for('database') }}">Database</a>
+	<div><a href="{{ url_for('logout') }}">Logout</a></div>
+        <hr>
+       	{% endif %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
